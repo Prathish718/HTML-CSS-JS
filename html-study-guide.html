@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML Quest — Complete Study Guide</title>
+<style>
+:root{color-scheme:light;--ink:#202337;--accent:#6445c0}*{box-sizing:border-box}body{margin:0;font:16px/1.65 system-ui,sans-serif;color:var(--ink);background:#f5f4fa}header,main,footer{max-width:1050px;margin:auto;padding:28px}header{padding-top:48px}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{margin-top:0}h3{margin-bottom:8px}a{color:var(--accent)}nav{display:flex;flex-wrap:wrap;gap:8px}nav a{padding:5px 12px;background:white;border-radius:20px;text-decoration:none}section{background:white;padding:26px;margin:0 0 24px;border-radius:16px;box-shadow:0 3px 16px #24204008}article{border-top:1px solid #e7e4ef;padding:16px 0}article:first-of-type{border:0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}pre{background:#202337;color:#f1eaff;padding:16px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}code{font-family:Consolas,monospace}p code,li code{background:#f0edf8;padding:2px 5px;border-radius:4px}.result{padding:16px;border:1px solid #e0dbea;border-radius:10px;min-width:0}.label{font-size:.75rem;letter-spacing:.09em;font-weight:700;color:#756b89;margin:8px 0}.note{background:#f2eefa;padding:12px 16px;border-left:4px solid var(--accent)}input,select,textarea,button{font:inherit;max-width:100%}button{cursor:pointer}table{border-collapse:collapse}td,th{border:1px solid #bdb5cc;padding:8px;text-align:left}svg{max-width:100%}iframe{width:100%;border:1px solid #ddd}img{max-width:100%;height:auto}summary{cursor:pointer;font-weight:600}footer{color:#655d73}@media(max-width:650px){.pair{grid-template-columns:1fr}header,main,footer{padding:18px}section{padding:18px}}@media print{body{background:white}section{box-shadow:none;break-inside:avoid}nav{display:none}pre{background:#f3f3f3;color:black}}
+</style></head><body>
+<header><p>🐉 LEARN BY EXAMPLE</p><h1>HTML Quest: the complete guide</h1><p>Build Dragon Academy one tag at a time. Every topic includes a plain-language explanation and an example. Most examples also show the browser result.</p><p><strong>Start here:</strong> <code>&lt;p&gt;Hello&lt;/p&gt;</code> has an opening tag, content, and a closing tag. Attributes add details: <code>&lt;a href="courses.html"&gt;Courses&lt;/a&gt;</code>. Void elements such as <code>img</code>, <code>input</code>, <code>br</code>, and <code>meta</code> have no closing tag.</p><nav id="contents" aria-label="Contents"></nav></header>
+<main id="guide"></main><footer>HTML describes meaning and structure. CSS controls appearance. JavaScript adds behavior. Save this file and open it in any modern browser — no installation required.</footer>
+<script>
+const groups=[
+['Building the academy 🏰','Document structure',[
+['html','The root element wraps the whole document. lang identifies its language.','<html lang="en">\n  <head><title>Dragon Academy</title></head>\n  <body>Welcome!</body>\n</html>',false],
+['head','Holds information about the page and resource references, rather than its main visible content.','<head>\n  <meta charset="UTF-8">\n  <title>Dragon Academy</title>\n</head>',false],
+['title','Names the browser tab. It is different from a visible h1 heading.','<title>Dragon Academy | Home</title>',false],
+['body','Contains the document content visitors see and interact with.','<body>\n  <h1>Welcome, trainer!</h1>\n  <p>Your adventure begins.</p>\n</body>',false],
+['meta','Provides metadata. charset sets character encoding; viewport helps mobile layouts use the device width.','<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">',false],
+['link','References an external resource. This example loads a separate CSS stylesheet.','<link rel="stylesheet" href="academy.css">',false],
+['style','Contains CSS rules inside the HTML document. Usually placed in head.','<style>\n  .dragon-name { color: purple; }\n</style>\n<p class="dragon-name">Chilli the Dragon</p>',false],
+['script','Runs JavaScript or loads an external JavaScript file. defer on an external classic script delays execution until HTML parsing finishes.','<script src="academy.js" defer><\/script>',false]
+]],
+['Make an announcement 📢','Headings and content',[
+['h1–h6','Six heading levels organize content, from the highest-level h1 to the deepest h6. Choose the level for hierarchy, not font size.','<h1>Dragon Academy</h1>\n<h2>Courses</h2>\n<h3>Flying</h3>\n<h4>Beginner Flying</h4>\n<h5>Lesson One</h5>\n<h6>Instructor Notes</h6>'],
+['p','A paragraph groups a block of related text.','<p>Your dragon lesson starts today.</p>'],
+['br','A line break within content. Use CSS for spacing instead of repeated br tags.','<p>Bring a helmet.<br>And a fire extinguisher.</p>'],
+['hr','A thematic break between topics, usually displayed as a horizontal line.','<p>Flying lesson complete.</p><hr><p>Next: fire safety.</p>'],
+['div','A generic container for grouping content. It is block-level by default and has no special semantic meaning.','<div><h3>Dragon Profile</h3><p>Name: Chilli</p></div>'],
+['span','A generic inline container for a small piece of content, useful for styling text.','<p>Meet <span style="color:purple">Chilli</span>.</p>']
+]],
+['Give words meaning 🎭','Logical text tags',[
+['strong','Marks strong importance, seriousness, or urgency. Usually bold.','<p><strong>Warning:</strong> Dragon approaching!</p>'],
+['em','Marks stress emphasis. Usually italic.','<p>I said <em>feed</em> the dragon.</p>'],
+['mark','Highlights text relevant to the current context, like a search match.','<p>Find the <mark>golden key</mark>.</p>'],
+['small','Represents side comments or small print, not simply any text you want smaller.','<small>Helmet not included.</small>'],
+['del','Marks text deleted from the document. Usually struck through.','<p>Lesson: <del>8 AM</del></p>'],
+['ins','Marks text added to the document. Usually underlined.','<p>New lesson time: <ins>9 AM</ins></p>'],
+['sub','Subscript, for conventions such as chemical formulas.','<p>Bring H<sub>2</sub>O.</p>'],
+['sup','Superscript, for conventions such as powers or footnote markers.','<p>10<sup>2</sup> = 100</p>'],
+['abbr','Identifies an abbreviation. title can provide its full expansion; do not rely on hovering alone to explain essential information.','<abbr title="Dragon Training Academy">DTA</abbr>'],
+['cite','Identifies the title of a creative work, such as a book or movie; it is not for the author’s name.','<p>Read <cite>The Dragon Handbook</cite>.</p>'],
+['q','A short inline quotation. Browsers normally supply quotation marks.','<p>The trainer said, <q>Trust your wings.</q></p>'],
+['blockquote','A separate block of quoted content. Its cite attribute can hold a source URL but does not display an attribution.','<blockquote><p>Every expert was once a beginner.</p></blockquote>'],
+['code','Identifies a fragment of computer code. It does not execute it.','<p>Call <code>dragon.fly()</code>.</p>'],
+['pre','Preserves spaces and line breaks. Combine it with code for multiline code samples.','<pre><code>dragon.feed();\n  dragon.fly();\ndragon.sleep();</code></pre>'],
+['address','Contact information for the author or owner of the page or nearest article. Not a tag for every postal address.','<address>Trainer: <a href="mailto:trainer@example.com">Email me</a></address>']
+]],
+['Dress up your words 👔','Presentational text tags',[
+['b','Draws attention without adding strong importance; usually bold. Use strong when importance is intended.','<p><b>Featured dragon:</b> Chilli</p>'],
+['i','Marks an alternate voice or kind of text, such as a technical term; usually italic. Use em for stress emphasis.','<p>Scientific name: <i>Draco magnificus</i> (fictional).</p>'],
+['u','Marks a non-textual annotation, such as a spelling error. Usually underlined; avoid confusing it with links.','<p>Spelling error: <u>dragonn</u></p>'],
+['small','Also appears in formatting lists because browsers usually render it smaller. Its meaning remains side comments or small print.','<small>Terms apply to all dragon riders.</small>'],
+['strike — obsolete','Historical strikethrough element; do not use in new HTML. Use del for deleted content, or s for information no longer accurate.','<!-- Old: <strike>Tickets available</strike> -->\n<p><s>Tickets available</s> Sold out!</p>']
+]],
+['Pack your adventure bag 🎒','Lists',[
+['ul + li','ul creates an unordered list; li is an individual list item. Use it when sequence does not matter.','<ul>\n  <li>Helmet</li>\n  <li>Shield</li>\n  <li>Snacks</li>\n</ul>'],
+['ol + li','ol creates an ordered list; each li is a step or item whose order matters.','<ol>\n  <li>Wear your helmet.</li>\n  <li>Mount your dragon.</li>\n  <li>Hold on!</li>\n</ol>'],
+['dl + dt + dd','dl is a description list. dt is a term or name; dd gives its description or value.','<dl>\n  <dt>Fire Dragon</dt>\n  <dd>Your enthusiastic barbecue assistant.</dd>\n  <dt>Ice Dragon</dt>\n  <dd>Keeps your drinks cold.</dd>\n</dl>']
+]],
+['Open a portal 🔗','Links and navigation',[
+['a','Creates a hyperlink when href is supplied. It can point to another page, a section ID, or an email address.','<a href="#top">Back to the top</a>\n<a href="mailto:trainer@example.com">Email trainer</a>'],
+['nav','Groups major navigation links. Not every small collection of links needs nav.','<nav aria-label="Academy navigation">\n  <a href="#topic-4">Supplies</a>\n  <a href="#topic-10">Leaderboard</a>\n</nav>']
+]],
+['Show off your dragon 📸','Images and figures',[
+['img','Embeds an image. src gives its location; alt supplies a text alternative. Decorative images should use alt="". width and height help reserve space.','<img src="dragon.jpg" alt="A red dragon sleeping beside a tree" width="400" height="300">',false],
+['figure + figcaption','figure groups self-contained content; figcaption supplies its caption. Figures can contain images, diagrams, or code, not just photos.','<figure>\n  <span role="img" aria-label="Mountain">⛰️</span>\n  <figcaption>Chilli’s mountain home.</figcaption>\n</figure>']
+]],
+['Give your page rooms 🗺️','Semantic page structure',[
+['header','Introductory content for a page or section, often a heading and navigation.','<header><h2>Dragon Academy</h2><p>Learn to fly safely.</p></header>',false],
+['nav','The main routes around your website. See the working navigation example above.','<nav><a href="courses.html">Courses</a></nav>',false],
+['main','The document’s dominant content. Normally use one visible main element per page.','<main><h1>Training Courses</h1><p>Choose your adventure.</p></main>',false],
+['section','Groups content by a shared theme, usually with a heading.','<section><h2>Flying Courses</h2><p>Beginner and advanced lessons.</p></section>',false],
+['article','A self-contained composition that could be distributed independently, such as a news story.','<article><h2>Baby Dragon Takes Flight!</h2><p>Only three roofs were damaged.</p></article>',false],
+['footer','Closing information for a page or section, such as copyright or related links.','<footer><small>© Dragon Academy</small></footer>',false],
+['figure, figcaption, address','These also carry structural meaning: self-contained content, its caption, and relevant contact information.','<figure>🐉<figcaption>Our academy mascot.</figcaption></figure>\n<address>Contact: trainer@example.com</address>']
+]],
+['Sound and action 🎬','Multimedia',[
+['audio + source','audio embeds sound; controls shows playback controls. source provides a media file and format. Multiple sources offer alternatives. Add your own files to play.','<audio controls>\n  <source src="roar.mp3" type="audio/mpeg">\n  <source src="roar.ogg" type="audio/ogg">\n  Your browser does not support audio.\n</audio>',false],
+['video + source','video embeds moving images. poster supplies a preview image. Use captions, commonly via track, when needed for accessible video.','<video controls width="400" poster="preview.jpg">\n  <source src="flying.mp4" type="video/mp4">\n  Your browser does not support video.\n</video>',false],
+['iframe','Embeds another HTML document. Give it a descriptive title. Some external websites block embedding. srcdoc below supplies a small embedded page directly.','<iframe title="Academy notice" srcdoc="<h2>Academy open!</h2><p>Flying lessons at 9 AM.</p>"></iframe>']
+]],
+['Draw magic symbols ✨','SVG',[
+['svg, circle, rect, line, text','svg is the drawing area. circle uses cx/cy for center and r for radius. rect uses x/y/width/height. line joins x1/y1 to x2/y2. text places words at x/y. fill sets the interior color; stroke sets the outline. Coordinates increase rightward and downward.','<svg width="300" height="150" viewBox="0 0 300 150" role="img" aria-label="Circle, rectangle, line and magic text">\n  <circle cx="45" cy="45" r="30" fill="orange" />\n  <rect x="100" y="15" width="65" height="60" fill="purple" />\n  <line x1="200" y1="15" x2="270" y2="75" stroke="green" stroke-width="4" />\n  <text x="20" y="120" font-size="22">Magic unlocked!</text>\n</svg>']
+]],
+['Build the leaderboard 🏆','Tables',[
+['table, caption, thead, tbody, tfoot, tr, th, td','table contains the data. caption gives its title. thead, tbody and tfoot group header, body and summary rows. tr is a row; th is a header cell; td is a data cell. scope identifies row or column headers. Borders in these previews come from CSS.','<table>\n  <caption>Dragon Leaderboard</caption>\n  <thead><tr><th scope="col">Dragon</th><th scope="col">Points</th></tr></thead>\n  <tbody>\n    <tr><th scope="row">Chilli</th><td>90</td></tr>\n    <tr><th scope="row">Frosty</th><td>80</td></tr>\n  </tbody>\n  <tfoot><tr><th scope="row">Total</th><td>170</td></tr></tfoot>\n</table>'],
+['colspan','Makes a cell span multiple columns. The spanning cell below covers both columns.','<table>\n  <tr><th colspan="2">Dragon Statistics</th></tr>\n  <tr><th>Speed</th><th>Power</th></tr>\n  <tr><td>80</td><td>95</td></tr>\n</table>'],
+['rowspan','Makes a cell span multiple rows. Omit the covered cell in the following row.','<table>\n  <tr><th>Dragon</th><th>Skill</th></tr>\n  <tr><td rowspan="2">Chilli</td><td>Flying</td></tr>\n  <tr><td>Fire breathing</td></tr>\n</table>']
+]],
+['Recruit a trainer 📝','Forms',[
+['form','Collects controls for submission. action gives the destination; method sets the HTTP method. A server must process a real submission. This guide intercepts sample submissions locally.','<form action="/apply" method="post">\n  <label for="app-name">Name</label>\n  <input id="app-name" name="trainer" required>\n  <button type="submit">Apply</button>\n</form>'],
+['label + input','label gives a control its name. Its for must match the input’s id. input type chooses the control; name is its key in submitted data.','<label for="trainer-name">Trainer name:</label>\n<input type="text" id="trainer-name" name="trainer" placeholder="Enter your name">'],
+['textarea','A multiline field. Initial text goes between the tags.','<label for="reason">Why join?</label>\n<textarea id="reason" name="reason" rows="3">I love dragons!</textarea>'],
+['select + option','select makes a selection control, usually a dropdown. option supplies each choice; value is the submitted value.','<label for="dragon-choice">Dragon</label>\n<select id="dragon-choice" name="dragon">\n  <option value="fire">Fire Dragon</option>\n  <option value="ice">Ice Dragon</option>\n</select>'],
+['button','A button may submit, reset, or perform a scripted action. Specify type: inside a form, a button normally submits if type is omitted.','<button type="button" onclick="this.textContent=\'ROAAAR! 🐉\'">Make the dragon roar</button>'],
+['fieldset + legend','fieldset groups related controls. legend supplies the group caption.','<fieldset>\n  <legend>Trainer details</legend>\n  <label for="nickname">Nickname</label>\n  <input id="nickname" name="nickname">\n</fieldset>'],
+['progress','Shows task completion, not user input. value/max gives the completed fraction; omit value for indeterminate progress. Automatic updates require JavaScript.','<label for="training">Training progress</label>\n<progress id="training" value="70" max="100">70%</progress>']
+]]
+];
+const inputs=[
+['text','Single-line text. placeholder is a hint, not a replacement for a label.','placeholder="Trainer name"'],
+['password','Masks characters visually; it does not encrypt data. minlength sets a length constraint.','minlength="8"'],
+['email','Checks basic email formatting during normal form validation; it does not prove that an address exists.','placeholder="you@example.com"'],
+['number','Numeric input. min and max set bounds; step sets the increment.','min="1" max="5" step="1" value="1"'],
+['date','A date picker. Display varies by browser and locale; the value uses YYYY-MM-DD.',''],
+['time','A time of day, without a date or time zone.',''],
+['file','Selects a file. accept guides selection, not secure validation. Real file-upload forms normally use method="post" and enctype="multipart/form-data".','accept="image/*"'],
+['checkbox','An independent on/off choice. Multiple boxes can be selected. Unchecked boxes are normally omitted from submitted data.','value="flying"'],
+['radio','One choice in a group. Radio buttons with the same name form the group.','value="fire"'],
+['range','A numeric slider. Useful when an approximate value is enough; it does not automatically show its number as text.','min="0" max="100" value="50"'],
+['submit','Submits a form, normally after browser validation.','value="Send application"'],
+['reset','Restores initial form values, which are not necessarily empty.','value="Restore starting values"'],
+['button','Has no default action. JavaScript supplies its behavior.','value="Roar!" onclick="this.value=\'ROAAAR!\'"']
+];
+groups.push(['Meet the input squad 🎮','All input types',inputs.map(([type,desc,attrs],i)=>{
+let code='<label for="input-'+type+'">'+({checkbox:'Flying skill',radio:'Fire team',range:'Roar volume'}[type]||type+' example')+'</label>\n<input type="'+type+'" id="input-'+type+'" name="'+type+'" '+attrs+'>';
+if(type==='radio')code+='\n<label><input type="radio" name="radio" value="ice"> Ice team</label>';
+if(type==='checkbox')code+='\n<label><input type="checkbox" name="checkbox" value="healing"> Healing skill</label>';
+if(type==='submit'||type==='reset')code='<form>\n  <label>Trainer <input name="trainer" value="Chilli" required></label>\n  <input type="'+type+'" '+attrs+'>\n</form>';
+return ['input type="'+type+'"',desc,code];
+})]);
+const guide=document.getElementById('guide');document.body.id='top';
+groups.forEach(([title,short,items],i)=>{
+const section=document.createElement('section');section.id='topic-'+i;
+const h=document.createElement('h2');h.textContent=(i+1)+'. '+title;section.append(h);
+items.forEach(([tag,desc,code,live=true])=>{
+const article=document.createElement('article');const heading=document.createElement('h3');heading.textContent=tag;const p=document.createElement('p');p.textContent=desc;article.append(heading,p);
+const pair=document.createElement('div');pair.className=live?'pair':'';const left=document.createElement('div');const label=document.createElement('div');label.className='label';label.textContent='EXAMPLE CODE';const pre=document.createElement('pre');const c=document.createElement('code');c.textContent=code;pre.append(c);left.append(label,pre);pair.append(left);
+if(live){const right=document.createElement('div');const rl=document.createElement('div');rl.className='label';rl.textContent='BROWSER RESULT · TRY IT';const result=document.createElement('div');result.className='result';result.innerHTML=code;result.querySelectorAll('form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();let msg=result.querySelector('[role="status"]');if(!msg){msg=document.createElement('p');msg.setAttribute('role','status');result.append(msg)}msg.textContent='✓ Demo submitted locally. No information was sent.'}));right.append(rl,result);pair.append(right)}article.append(pair);section.append(article);
+});guide.append(section);const a=document.createElement('a');a.href='#'+section.id;a.textContent=short;document.getElementById('contents').append(a);
+});
+const ending=document.createElement('section');ending.innerHTML='<h2>Final boss fight 🐲</h2><p>Which tags would you use for a main heading, an ordered list, deleted text, a hyperlink, and multiple selectable powers?</p><details><summary>Reveal answers</summary><p><code>h1</code>, <code>ol</code> with <code>li</code>, <code>del</code>, <code>a href="…"</code>, and <code>input type="checkbox"</code>.</p></details><h3>Quick reminders</h3><ul><li><code>&lt;!DOCTYPE html&gt;</code> is a declaration that selects standards mode, not an HTML tag.</li><li>To display HTML as text, write <code>&amp;lt;</code> for &lt; and <code>&amp;gt;</code> for &gt;.</li><li>Use CSS for purely visual formatting. Use semantic tags for meaning.</li><li>Examples with filenames such as dragon.jpg, academy.css, roar.mp3, and flying.mp4 require your own files; those resources are not included.</li><li>Examples share this guide’s typography and table styling, so their appearance may differ from an unstyled page.</li></ul>';guide.append(ending);
+</script></body></html>
